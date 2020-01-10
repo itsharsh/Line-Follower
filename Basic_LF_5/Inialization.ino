@@ -1,5 +1,4 @@
-void init_pinmode()
-{
+void init_pinmode() {
   pinMode(lm1, OUTPUT);
   pinMode(lm2, OUTPUT);
   pinMode(rm1, OUTPUT);
@@ -15,4 +14,3 @@ void init_pinmode()
 //  digitalWrite(3, LOW);
 //  digitalWrite(8, LOW);
 //  digitalWrite(12, LOW);
-

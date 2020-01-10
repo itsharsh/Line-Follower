@@ -1,5 +1,16 @@
-void motor_val(byte a, byte b, byte c, byte d)
-{
+/*
+  Functions:
+  go_stop
+  go_360
+  go_reverse
+  go_straight
+  go_sleft
+  go_sright
+  go_hleft
+  go_hright
+*/
+
+void motor_val(byte a, byte b, byte c, byte d) {
   //  a = 0; b = 0; c = 0; d = 0;
   analogWrite(lm1, a);
   analogWrite(lm2, b);
@@ -7,48 +18,41 @@ void motor_val(byte a, byte b, byte c, byte d)
   analogWrite(rm2, d);
 }
 
-void go_stop()
-{
+void go_stop() {
   Serial.print("Stop"); Serial.print("\t");
   motor_val(0, 0, 0, 0);
   mturn = 0;
 }
 
-void go_360()
-{
+void go_360() {
   Serial.print("360"); Serial.print("\t");
   motor_val(0, throttle, throttle, 0);
 }
 
-void go_reverse()
-{
+void go_reverse() {
   Serial.print("Reverse"); Serial.print("\t");
   motor_val(throttle, 0, throttle, 0);
 }
 
-void go_straight ()
-{
+void go_straight () {
   Serial.print("Straight"); Serial.print("\t");
   motor_val(0, throttle, 0, throttle);
   mturn = 3;
 }
 
-void go_sleft()
-{
+void go_sleft() {
   Serial.print("Slight Left"); Serial.print("\t");
   motor_val(0, sleft, 0, throttle);
   mturn = 2;
 }
 
-void go_sright()
-{
+void go_sright() {
   Serial.print("Slight Right"); Serial.print("\t");
   motor_val(0, throttle, 0, sright);
   mturn = 4;
 }
 
-void go_hleft()
-{
+void go_hleft() {
   //  if (mturn != 5)
   {
     Serial.print("Hard Left"); Serial.print("\t");
@@ -57,8 +61,7 @@ void go_hleft()
   }
 }
 
-void go_hright()
-{
+void go_hright() {
   //  if (mturn != 1)
   {
     Serial.print("Hard Right"); Serial.print("\t");
