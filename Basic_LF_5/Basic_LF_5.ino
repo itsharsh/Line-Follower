@@ -1,4 +1,4 @@
-/0 = Extreme Left (xl)
+//0 = Extreme Left (xl)
 //1 = Left (l)
 //2 = Centre (c)
 //3 = Right (r)
@@ -6,16 +6,21 @@
 //sdata is raw data
 //sval is 0 or 1
 
-byte spin[5] = {A5, A4, A3, A2, A1};
-int ledpin[5] = {12, 11, 10, 8, 7};
-byte lm1 = 11, lm2 = 10, rm1 = 9, rm2 = 6;
+//Pins
+byte spin[5] = {A5, A4, A3, A2, A1};        //el l c r er
+int ledpin[5] = {12, 11, 10, 8, 7};         //el l c r er
+byte lm1 = 11, lm2 = 10, rm1 = 9, rm2 = 6;  //Motor Pins
 
+//Sensor Variables
 int sdata[5], smin[5], smax[5];
-int savg[5] = {480, 480, 480, 480, 480};
+int savg[5] = {480, 480, 480, 480, 480};  //Hard-Coded sensor calibrated values if s_calib() is not called
 byte sval[5];
 
-byte cal_throttle = 110   , throttle = 140;
+//Bot Control Config
+byte cal_throttle = 110, throttle = 140;            //Bot Speed is controlled by throttle
 int sturn = throttle * 0.76, rev = throttle * 0.50; //159 36 130   146 36 91
+
+//Default variables
 byte sleft = sturn, sright = sturn;
 byte mturn = 0;
 int turn = 0;
@@ -28,7 +33,7 @@ void setup()
   //  s_calib();            //Start Calibration
   print_scalib_val();       //Calibration Results
   //  led_all_dim(200);     //Sensor Debug Leds Glow to represent stop of calibration
-  //  go_straight();        //Command to give a little push to bot
+  go_straight();            //Command to give a little push to bot
 }
 
 void loop()
